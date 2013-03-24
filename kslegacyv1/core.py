@@ -27,11 +27,10 @@ DEFAULT_DOMAIN_ID = CONF.identity.default_domain_id
 class LegacyV1Controller(token.controllers.Auth):
     def auth(self, context):
         if not context.get('headers'):
-            #Raise invalid
-            return
+            return webob.Response(status='401 Unauthorized')
 
         header_user_tenant = context.get('headers').get('X-Auth-User')
-        header_token = context.get('headers').get('X-Auth-Token')
+        header_token = context.get('headers').get('X-Auth-Key')
 
         if (not header_user_tenant or not header_token
             or not ':' in header_user_tenant):
