@@ -14,9 +14,7 @@
 # License for the specific language governing permissions and limitations
 # under the License.
 import webob
-import uuid
 
-from keystone import identity
 from keystone import config
 from keystone import token
 from keystone import exception
