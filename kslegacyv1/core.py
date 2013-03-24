@@ -62,6 +62,9 @@ class LegacyV1Controller(token.controllers.Auth):
                     if service['type'] == 'object-store':
                         storage_url = service['endpoints'][0]['publicURL']
 
+        if not storage_url:
+            return webob.Response(status='401 Unauthorized')
+
         token_id = user_ref['access']['token']['id']
         headers = [('X-Auth-Token', token_id)]
         headers.append(('X-Storage-Token', token_id))
@@ -78,6 +81,6 @@ class LegacyV1Controller(token.controllers.Auth):
 class LegacyV1(wsgi.ExtensionRouter):
     def add_routes(self, mapper):
         legacy_v1_controller = LegacyV1Controller()
-        mapper.connect('/auth',
+        mapper.connect('/',
                        controller=legacy_v1_controller,
                        action='auth')
