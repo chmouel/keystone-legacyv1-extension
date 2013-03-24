@@ -18,13 +18,13 @@ Setup
 install it by the way you install things on your system (be it
 puppet/packages/source checkin/etc..)
 
-add this to your keystone.conf::
+add this to your keystone.conf (before the ``[composite::main]`` stanza)::
 
   [filter:legacyv1]
   paste.filter_factory = kslegacyv1:LegacyV1.factory
 
   [pipeline:legacyv1]
-  pipeline = access_log sizelimit stats_monitoring url_normalize legacyv1 token_auth admin_token_auth xml_body json_body debug stats_reporting ec2_extension s3_extension service_v3
+  pipeline = access_log sizelimit stats_monitoring url_normalize debug legacyv1 public_service
 
 and add this to your ``[composite:main]``::
 
