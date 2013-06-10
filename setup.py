@@ -39,6 +39,6 @@ setup(
         'Environment :: No Input/Output (Daemon)'],
     install_requires=['keystone'],
     entry_points={
-        'paste.filter_factory': ['account_locked=%s' % entry_point]
+        'paste.filter_factory': ['LegacyV1=%s' % entry_point]
     }
 )
