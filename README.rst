@@ -15,9 +15,7 @@ An extension that allows to access keystone with v1 auth type (i.e: rackspace cl
 Setup
 =====
 
-You need that patch first in your keystone::
-
- https://review.openstack.org/#/c/25235/
+You need one recent keystone version as of 14 June 2013.
 
 install the package by the way you install things on your system (be it
 puppet/packages/source checkin/etc..)
