@@ -51,8 +51,11 @@ A auth will look like this::
 It should be easy to use cyberduck without any hack as long you
 configure your keystone under ssl or via a reverse proxy.
 
-====
-TODO
-====
 
-- Tests.
+=====
+TESTS
+=====
+
+- Run them with (-w is needed here)::
+
+  nosetests -w tests -sx
