@@ -100,7 +100,6 @@ class LegacyV1Test(test.TestCase):
         self.assertEquals(resp.headers['X-Storage-Token'],
                           tokenFixture_storage_token_id)
 
-
     def test_good_v2(self):
         self._test_good(fixtures.SAMPLE_V2_TOKEN)
 
