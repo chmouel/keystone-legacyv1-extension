@@ -16,8 +16,9 @@
 import webob
 
 from keystone import config
-from keystone import token
 from keystone import exception
+from keystone import token
+
 from keystone.common import wsgi
 
 CONF = config.CONF
@@ -33,13 +34,10 @@ class LegacyV1Controller(token.controllers.Auth):
         header_token = context.get('headers').get('X-Auth-Key')
 
         if (not header_user_tenant or not header_token
-            or not ':' in header_user_tenant):
+                or not ':' in header_user_tenant):
             return webob.Response(status='401 Unauthorized')
 
-        try:
-            (userName, tenantName) = header_user_tenant.split(':')
-        except(ValueError):
-            return webob.Response(status='401 Unauthorized')
+        (userName, tenantName) = header_user_tenant.split(':')
 
         auth = {
             "passwordCredentials": {
