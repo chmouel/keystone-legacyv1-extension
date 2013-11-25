@@ -37,7 +37,7 @@ class LegacyV1Controller(token.controllers.Auth):
                 or not ':' in header_user_tenant):
             return webob.Response(status='401 Unauthorized')
 
-        (userName, tenantName) = header_user_tenant.split(':')
+        (tenantName, userName) = header_user_tenant.split(':')
 
         auth = {
             "passwordCredentials": {
